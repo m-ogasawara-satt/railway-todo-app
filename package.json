@@ -8,6 +8,8 @@
     "@testing-library/react": "^15.0.2",
     "@testing-library/user-event": "^14.5.2",
     "axios": "^1.6.8",
+    "immer": "^10.0.4",
+    "node-sass": "^7.0.3",
     "react": "^18.2.0",
     "react-cookie": "^7.1.4",
     "react-dom": "^18.2.0",
@@ -27,6 +29,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "dev": "WATCHPACK_POLLING=true react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
