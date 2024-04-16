@@ -1,0 +1,20 @@
+{
+  "extends": ["prettier"],
+  "plugins": ["prettier"],
+  "parser": "@babel/eslint-parser",
+  // babelの設定ファイルが無くても動くように設定
+  "parserOptions": {
+    "requireConfigFile": false,
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "babelOptions": {
+      "presets": ["@babel/preset-react"]
+    }
+  },
+  "rules": {
+    "prettier/prettier": "error"
+  }
+}
