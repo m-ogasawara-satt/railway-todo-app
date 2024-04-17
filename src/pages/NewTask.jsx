@@ -11,6 +11,7 @@ export const NewTask = () => {
   const [lists, setLists] = useState([]);
   const [title, setTitle] = useState('');
   const [detail, setDetail] = useState('');
+  const [dueDate, setDueDate] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [cookies] = useCookies();
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ export const NewTask = () => {
         },
       })
       .then(() => {
-        navigate('/new-path');
+        navigate('/');
       })
       .catch((err) => {
         setErrorMessage(`タスクの作成に失敗しました。${err}`);

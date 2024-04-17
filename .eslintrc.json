@@ -1,20 +1,28 @@
 {
+  // prettierの設定ファイルを読み込む
   "extends": ["prettier"],
+  // prettierのプラグインを使用できるようにする
   "plugins": ["prettier"],
+  // 最新のJavaScript構文やJSXを解析できるようにする
   "parser": "@babel/eslint-parser",
-  // babelの設定ファイルが無くても動くように設定
   "parserOptions": {
+    // babelの設定ファイルが無くても動くように設定
     "requireConfigFile": false,
+    // ECMAScript2020の構文を解析できるようにする
     "ecmaVersion": 2020,
+    // ESモジュールを解析できるようにする
     "sourceType": "module",
     "ecmaFeatures": {
+      // JSX構文を解析できるようにする
       "jsx": true
     },
     "babelOptions": {
+      // ReactのJSX構文を解析できるようにする
       "presets": ["@babel/preset-react"]
     }
   },
   "rules": {
+    // prettierのルールに違反した場合、ESlintからエラーが出る
     "prettier/prettier": "error"
   }
 }
