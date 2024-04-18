@@ -11,6 +11,7 @@ export const NewTask = () => {
   const [lists, setLists] = useState([]);
   const [title, setTitle] = useState('');
   const [detail, setDetail] = useState('');
+  const [limit, setLimit] = useState('');
   const [dueDate, setDueDate] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [cookies] = useCookies();
@@ -89,6 +90,12 @@ export const NewTask = () => {
             type="text"
             onChange={handleDetailChange}
             className="new-task-detail"
+          />
+          <br />
+          <input
+            type="datetime-local"
+            value={limit}
+            onChange={(e) => setLimit(e.target.value)}
           />
           <br />
           <button

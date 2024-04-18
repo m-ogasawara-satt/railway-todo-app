@@ -127,26 +127,25 @@ const Tasks = (props) => {
   const { tasks, selectListId, isDoneDisplay } = props;
   if (tasks === null) return <></>;
 
+  const renderTask = (task, key) => (
+    <li key={key} className="task-item">
+      <Link
+        to={`/lists/${selectListId}/tasks/${task.id}`}
+        className="task-item-link"
+      >
+        {task.title}
+        <br />
+        {task.done ? '完了' : '未完了'}
+        <br />
+        期限:{' '}
+        {task.limit ? new Date(task.limit).toLocaleDateString() : '未設定'}
+      </Link>
+    </li>
+  );
+
   if (isDoneDisplay == 'done') {
     return (
-      <ul>
-        {tasks
-          .filter((task) => {
-            return task.done === true;
-          })
-          .map((task, key) => (
-            <li key={key} className="task-item">
-              <Link
-                to={`/lists/${selectListId}/tasks/${task.id}`}
-                className="task-item-link"
-              >
-                {task.title}
-                <br />
-                {task.done ? '完了' : '未完了'}
-              </Link>
-            </li>
-          ))}
-      </ul>
+      <ul>{tasks.filter((task) => task.done === true).map(renderTask)}</ul>
     );
   }
 

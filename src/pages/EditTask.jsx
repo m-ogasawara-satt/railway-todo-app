@@ -13,6 +13,7 @@ export const EditTask = () => {
   const [title, setTitle] = useState('');
   const [detail, setDetail] = useState('');
   const [isDone, setIsDone] = useState();
+  const [limit, setLimit] = useState(task.limit);
   const [errorMessage, setErrorMessage] = useState('');
   const handleTitleChange = (e) => setTitle(e.target.value);
   const handleDetailChange = (e) => setDetail(e.target.value);
@@ -96,6 +97,12 @@ export const EditTask = () => {
             onChange={handleDetailChange}
             className="edit-task-detail"
             value={detail}
+          />
+          <br />
+          <input
+            type="datetime-local"
+            value={limit}
+            onChange={(e) => setLimit(e.target.value)}
           />
           <br />
           <div>
