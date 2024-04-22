@@ -24,6 +24,7 @@ export const NewTask = () => {
       title: title,
       detail: detail,
       done: false,
+      limit: limit ? new Date(limit).toISOString() : null, // 期限をISO形式の文字列に変換
     };
 
     axios

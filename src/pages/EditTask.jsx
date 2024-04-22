@@ -13,7 +13,7 @@ export const EditTask = () => {
   const [title, setTitle] = useState('');
   const [detail, setDetail] = useState('');
   const [isDone, setIsDone] = useState();
-  const [limit, setLimit] = useState(task.limit);
+  const [limit, setLimit] = useState();
   const [errorMessage, setErrorMessage] = useState('');
   const handleTitleChange = (e) => setTitle(e.target.value);
   const handleDetailChange = (e) => setDetail(e.target.value);
@@ -24,6 +24,7 @@ export const EditTask = () => {
       title: title,
       detail: detail,
       done: isDone,
+      limit: limit ? new Date(limit).toISOString() : null,
     };
 
     axios
@@ -68,11 +69,18 @@ export const EditTask = () => {
         setTitle(task.title);
         setDetail(task.detail);
         setIsDone(task.done);
+        if (task.limit) {
+          const date = new Date(task.limit);
+          date.setHours(date.getHours() + 9);
+          setLimit(date.toISOString().slice(0, 16));
+        } else {
+          setLimit('');
+        }
       })
       .catch((err) => {
         setErrorMessage(`タスク情報の取得に失敗しました。${err}`);
       });
-  }, []);
+  }, [listId, taskId]);
 
   return (
     <div>
